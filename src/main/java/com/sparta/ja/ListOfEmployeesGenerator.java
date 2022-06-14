@@ -22,6 +22,7 @@ public class ListOfEmployeesGenerator {
     private static final ArrayList<EmployeeDTO> listOfCleanEmployees = new ArrayList<>();
     private static final ArrayList<EmployeeDTO> listOfCorruptEmployees = new ArrayList<>();
     private static Logger logger = CleanerLogger.getLogger();
+    private static int count = 2;
 
     public static void readFromFile(String fileName) {
         logger.log(Level.INFO, "Attempting to read CSV file");
@@ -30,8 +31,9 @@ public class ListOfEmployeesGenerator {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             bufferedReader.readLine(); //ignores first line of made up of headers
-            logger.log(Level.INFO, "Iterating through records in file");
+            logger.log(Level.INFO, "Iterating through records in " + fileName);
             for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()){
+                logger.log(Level.INFO, "Processing line " + count + " in file");
                 String[] employeeDetails = line.split(",");
 
                 EmployeeDTO employeeDTO = new EmployeeDTO(employeeDetails);
@@ -43,6 +45,7 @@ public class ListOfEmployeesGenerator {
                     listOfCorruptEmployees.add(employeeDTO);
                     logger.log(Level.INFO, "Adding employee into corrupted dataset");
                 }
+                count++;
             }
             System.out.println(listOfCleanEmployees.size());
             System.out.println(listOfCorruptEmployees.size());
