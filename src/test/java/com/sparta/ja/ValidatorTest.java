@@ -52,5 +52,33 @@ public class ValidatorTest {
         String testDateFormat ="06/06/2010";
         Assertions.assertTrue(Validator.isValidDate(testDateFormat));
     }
+    @Test
+    @DisplayName("Check if the gender is valid")
+    void checkForaValidGender() {
+        String testGenderFormat ="M";
+        Assertions.assertTrue(Validator.isValidGender(testGenderFormat));
+    }
+
+    @Test
+    @DisplayName("Check if a gender is Invalid")
+    void checkIfaGenderIsInvalid() {
+        String testGenderFormat ="X";
+        Assertions.assertFalse(Validator.isValidGender(testGenderFormat));
+    }
+
+    @Test
+    @DisplayName("Check if there is only one Middle name Initial")
+    void checkIfThereisOnlyOneMiddleNameInitial() {
+        String testMiddleNameFormat ="A";
+        Assertions.assertTrue(Validator.isValidMiddleInitial(testMiddleNameFormat));
+    }
+    @Test
+    @DisplayName("Check if there are more then one Middle name Initial")
+    void checkIfThereAreMoreThenOneMiddleNameInitial() {
+        String testMiddleNameFormat ="AS";
+        Assertions.assertFalse(Validator.isValidMiddleInitial(testMiddleNameFormat));
+    }
+
+
 
 }
