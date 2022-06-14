@@ -92,17 +92,20 @@ public class ValidatorTest {
     }
     @Test
     @DisplayName("Check the gender in Uppercase")
-    void checkIfaGenderIsInvalidUppercase() {
+
+    void checkIfaGenderIsInvalidinUppercase() {
+
         String testGenderFormat = "C";
         Assertions.assertFalse(Validator.isValidGender(testGenderFormat));
     }
     @Test
     @DisplayName("Check the gender in Lowercase")
+
     void checkIfaGenderIsInvalidLowercase() {
+
         String testGenderFormat = "d";
         Assertions.assertFalse(Validator.isValidGender(testGenderFormat));
     }
-
 
 
     @Test
@@ -135,6 +138,18 @@ public class ValidatorTest {
     @DisplayName("Check if there are more then one Middle name Initial in Upper and Lowercase")
     void checkIfThereAreMoreThenOneMiddleNameInitialInUpperAndLowercase() {
         String testMiddleNameFormat = "Gh";
+        Assertions.assertFalse(Validator.isValidMiddleInitial(testMiddleNameFormat));
+    }
+    @Test
+    @DisplayName("Check if there are more then one Middle name Initial is False")
+    void checkIfThereAreMoreThenOneMiddleNameInitialIsFalse() {
+        String testMiddleNameFormat = "False";
+        Assertions.assertFalse(Validator.isValidMiddleInitial(testMiddleNameFormat));
+    }
+    @Test
+    @DisplayName("Check if there are more then one Middle name Initial is True")
+    void checkIfThereAreMoreThenOneMiddleNameInitialIsTrue() {
+        String testMiddleNameFormat = "True";
         Assertions.assertFalse(Validator.isValidMiddleInitial(testMiddleNameFormat));
     }
 
