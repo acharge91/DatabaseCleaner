@@ -92,13 +92,17 @@ public class ValidatorTest {
     }
     @Test
     @DisplayName("Check the gender in Uppercase")
+
     void checkIfaGenderIsInvalidinUppercase() {
+
         String testGenderFormat = "C";
         Assertions.assertFalse(Validator.isValidGender(testGenderFormat));
     }
     @Test
     @DisplayName("Check the gender in Lowercase")
-    void checkIfaGenderIsInvalidinLowercase() {
+
+    void checkIfaGenderIsInvalidLowercase() {
+
         String testGenderFormat = "d";
         Assertions.assertFalse(Validator.isValidGender(testGenderFormat));
     }

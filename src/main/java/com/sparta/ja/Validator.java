@@ -98,10 +98,10 @@ public class Validator {
     }
 
     public static boolean isValidMiddleInitial(String initial){
-        if (initial.length() < 2){
-            return true;
-        }
-        return false;
+        String regexPattern = "[A-Za-z]";
+        return Pattern.compile(regexPattern)
+                .matcher(initial)
+                .matches();
     }
 
     public static boolean isValidEmail(EmployeeDTO employee, String email){
@@ -120,7 +120,7 @@ public class Validator {
     }
 
     public static boolean isValidSalary(String salary){
-        if (Integer.parseInt(salary) > 0){
+        if (Integer.parseInt(salary) >= 0){
             return true;
         }
         return false;
