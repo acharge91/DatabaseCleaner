@@ -1,5 +1,10 @@
 package com.sparta.ja;
 
+import com.sparta.ja.logging.CleanerLogger;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class EmployeeDTO {
 
     private String empId;
@@ -13,6 +18,7 @@ public class EmployeeDTO {
     private String dateOfJoining;
     private String salary;
     private boolean isClean;
+    private static Logger logger = CleanerLogger.getLogger();
 
     public EmployeeDTO(String empId, String namePrefix, String firstName, String middleInitial, String lastName, String gender, String email, String dob, String dateOfJoining, String salary) {
         this.empId = empId;
@@ -25,6 +31,7 @@ public class EmployeeDTO {
         this.dob = dob;
         this.dateOfJoining = dateOfJoining;
         this.salary = salary;
+        logger.log(Level.INFO, "Creating employee from multiple separate values");
     }
 
     public EmployeeDTO(String[] fileRecord) {
@@ -38,10 +45,12 @@ public class EmployeeDTO {
         this.dob = fileRecord[7];
         this.dateOfJoining = fileRecord[8];
         this.salary = fileRecord[9];
+        logger.log(Level.INFO, "Creating employee from values in String array");
     }
 
     @Override
     public String toString() {
+        logger.log(Level.INFO, "toString method for employee called");
         return "EmployeeDTO{" +
                 "empId='" + empId + '\'' +
                 ", namePrefix='" + namePrefix + '\'' +
