@@ -60,5 +60,24 @@ public class EmployeeDAO {
             throw new RuntimeException(e);
         }
     }
+    public void insertEmployee(EmployeeDTO employee){
+
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(SQLQueries.INSERT_INTO_DB);
+            preparedStatement.setInt(1, employee.getEmpId());
+            preparedStatement.setString(2, employee.getNamePrefix());
+            preparedStatement.setString(3, employee.getFirstName());
+            preparedStatement.setString(4, employee.getMiddleInitial());
+            preparedStatement.setString(5, employee.getLastName());
+            preparedStatement.setString(6, employee.getGender());
+            preparedStatement.setString(7, employee.getEmail());
+            preparedStatement.setDate(8, employee.getDob());
+            preparedStatement.setDate(9, employee.getDateOfJoining());
+            preparedStatement.setInt(10, employee.getSalary());
+            System.out.println(preparedStatement.executeUpdate());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
 
