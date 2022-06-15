@@ -56,5 +56,13 @@ public class ListOfEmployeesGenerator {
             }
             count++;
         }
+
+//        DBRecordInserter.getSeparateEmployeeArray(listOfCleanEmployees);
     }
+
+    public static List<EmployeeDTO> getListOfCleanEmployees() {
+        return listOfCleanEmployees;
+    }
+
+
 }
