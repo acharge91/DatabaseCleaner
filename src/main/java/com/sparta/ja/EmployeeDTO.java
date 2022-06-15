@@ -2,74 +2,61 @@ package com.sparta.ja;
 
 import com.sparta.ja.logging.CleanerLogger;
 
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class EmployeeDTO {
 
-    private String empId;
+    private int empId;
     private String namePrefix;
     private String firstName;
-    private String middleInitial;
+    private char middleInitial;
     private String lastName;
-    private String gender;
+    private char gender;
     private String email;
-    private String dob; //private LocalDate dob;
-    private String dateOfJoining;
-    private String salary;
+    private LocalDate dob;
+    private LocalDate dateOfJoining;
+    private int salary;
     private boolean isClean;
     private static Logger logger = CleanerLogger.getLogger();
 
-    public EmployeeDTO(String empId, String namePrefix, String firstName, String middleInitial, String lastName, String gender, String email, String dob, String dateOfJoining, String salary) {
-        this.empId = empId;
-        this.namePrefix = namePrefix;
-        this.firstName = firstName;
-        this.middleInitial = middleInitial;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.email = email;
-        this.dob = dob;
-        this.dateOfJoining = dateOfJoining;
-        this.salary = salary;
-        logger.log(Level.INFO, "Creating employee from multiple separate values");
-    }
-
-    public EmployeeDTO(String[] fileRecord) {
-        this.empId = fileRecord[0];
-        this.namePrefix = fileRecord[1];
-        this.firstName = fileRecord[2];
-        this.middleInitial = fileRecord[3];
-        this.lastName = fileRecord[4];
-        this.gender = fileRecord[5];
-        this.email = fileRecord[6];
-        this.dob = fileRecord[7];
-        this.dateOfJoining = fileRecord[8];
-        this.salary = fileRecord[9];
-        logger.log(Level.INFO, "Creating employee from values in String array");
+    public EmployeeDTO(EmployeeDTOString employee) {
+        this.empId = Integer.parseInt(employee.getEmpId());
+        this.namePrefix = employee.getNamePrefix();
+        this.firstName = employee.getFirstName();
+        this.middleInitial = employee.getMiddleInitial().charAt(0);
+        this.lastName = employee.getLastName();
+        this.gender = employee.getGender().charAt(0);
+        this.email = employee.getEmail();
+        this.dob = LocalDate.parse(employee.getDob(), Validator.getDateFormatter());
+        this.dateOfJoining = LocalDate.parse(employee.getDateOfJoining(), Validator.getDateFormatter());
+        this.salary = Integer.parseInt(employee.getSalary());
+        logger.log(Level.INFO, "Creating employee with correct data types from EmployeeDTOString");
     }
 
     @Override
     public String toString() {
-        logger.log(Level.INFO, "toString method for employee called");
         return "EmployeeDTO{" +
-                "empId='" + empId + '\'' +
+                "empId=" + empId +
                 ", namePrefix='" + namePrefix + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", middleInitial='" + middleInitial + '\'' +
+                ", middleInitial=" + middleInitial +
                 ", lastName='" + lastName + '\'' +
-                ", gender='" + gender + '\'' +
+                ", gender=" + gender +
                 ", email='" + email + '\'' +
-                ", dob='" + dob + '\'' +
-                ", dateOfJoining='" + dateOfJoining + '\'' +
-                ", salary='" + salary + '\'' +
+                ", dob=" + dob +
+                ", dateOfJoining=" + dateOfJoining +
+                ", salary=" + salary +
+                ", isClean=" + isClean +
                 '}';
     }
 
-    public String getEmpId() {
+    public int getEmpId() {
         return empId;
     }
 
-    public void setEmpId(String empId) {
+    public void setEmpId(int empId) {
         this.empId = empId;
     }
 
@@ -89,11 +76,11 @@ public class EmployeeDTO {
         this.firstName = firstName;
     }
 
-    public String getMiddleInitial() {
+    public char getMiddleInitial() {
         return middleInitial;
     }
 
-    public void setMiddleInitial(String middleInitial) {
+    public void setMiddleInitial(char middleInitial) {
         this.middleInitial = middleInitial;
     }
 
@@ -105,11 +92,11 @@ public class EmployeeDTO {
         this.lastName = lastName;
     }
 
-    public String getGender() {
+    public char getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(char gender) {
         this.gender = gender;
     }
 
@@ -121,27 +108,27 @@ public class EmployeeDTO {
         this.email = email;
     }
 
-    public String getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 
-    public String getDateOfJoining() {
+    public LocalDate getDateOfJoining() {
         return dateOfJoining;
     }
 
-    public void setDateOfJoining(String dateOfJoining) {
+    public void setDateOfJoining(LocalDate dateOfJoining) {
         this.dateOfJoining = dateOfJoining;
     }
 
-    public String getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 

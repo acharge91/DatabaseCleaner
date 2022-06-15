@@ -6,21 +6,14 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.format.FormatStyle;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ListOfEmployeesGenerator {
 
-    private static final ArrayList<EmployeeDTO> listOfCleanEmployees = new ArrayList<>();
-    private static final ArrayList<EmployeeDTO> listOfCorruptEmployees = new ArrayList<>();
+    private static final List<EmployeeDTO> listOfCleanEmployees = new ArrayList<>();
+    private static final List<EmployeeDTO> listOfCorruptEmployees = new ArrayList<>();
     private static Logger logger = CleanerLogger.getLogger();
     private static int count = 2;
 
@@ -32,21 +25,9 @@ public class ListOfEmployeesGenerator {
 
             bufferedReader.readLine(); //ignores first line of made up of headers
             logger.log(Level.INFO, "Iterating through records in " + fileName);
-            for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()){
-                logger.log(Level.INFO, "Processing line " + count + " in file");
-                String[] employeeDetails = line.split(",");
 
-                EmployeeDTO employeeDTO = new EmployeeDTO(employeeDetails);
+            addEmployeesToArrays(bufferedReader);
 
-                if (Validator.validate(employeeDTO)){
-                    listOfCleanEmployees.add(employeeDTO);
-                    logger.log(Level.INFO, "Adding employee into clean dataset");
-                } else {
-                    listOfCorruptEmployees.add(employeeDTO);
-                    logger.log(Level.INFO, "Adding employee into corrupted dataset");
-                }
-                count++;
-            }
             System.out.println(listOfCleanEmployees.size());
             System.out.println(listOfCorruptEmployees.size());
 
@@ -56,6 +37,24 @@ public class ListOfEmployeesGenerator {
         } catch (IOException e) {
             logger.log(Level.INFO, "IOException caught");
             throw new RuntimeException(e);
+        }
+    }
+
+    private static void addEmployeesToArrays(BufferedReader bufferedReader) throws IOException {
+        for (String line = bufferedReader.readLine(); line != null; line = bufferedReader.readLine()){
+            logger.log(Level.INFO, "Processing line " + count + " in file");
+            String[] employeeDetails = line.split(",");
+
+            EmployeeDTOString employeeDTOString = new EmployeeDTOString(employeeDetails);
+
+            if (Validator.validate(employeeDTOString)){
+                listOfCleanEmployees.add(new EmployeeDTO(employeeDTOString));
+                logger.log(Level.INFO, "Adding employee into clean dataset");
+            } else {
+                listOfCorruptEmployees.add(new EmployeeDTO(employeeDTOString));
+                logger.log(Level.INFO, "Adding employee into corrupted dataset");
+            }
+            count++;
         }
     }
 }

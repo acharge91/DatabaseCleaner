@@ -15,7 +15,7 @@ public class Validator {
     private static Set<String> employeeSet = new HashSet<>();
     private static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("M/d/yyyy");
     private static Logger logger = CleanerLogger.getLogger();
-    public static boolean validate(EmployeeDTO employee){
+    public static boolean validate(EmployeeDTOString employee){
         logger.log(Level.INFO, "Validating values for employee record");
         if (employeeSet.add(employee.getEmpId())){
             logger.log(Level.INFO, "Employee ID is not a duplicate");
@@ -104,7 +104,7 @@ public class Validator {
                 .matches();
     }
 
-    public static boolean isValidEmail(EmployeeDTO employee, String email){
+    public static boolean isValidEmail(EmployeeDTOString employee, String email){
         if (employeeSet.add(employee.getEmail()) && isValidEmailFormat(email)){
             return true;
         }
@@ -126,7 +126,7 @@ public class Validator {
         return false;
     }
 
-
-
-
+    public static DateTimeFormatter getDateFormatter() {
+        return dateFormatter;
+    }
 }
