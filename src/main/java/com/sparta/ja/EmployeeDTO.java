@@ -11,9 +11,9 @@ public class EmployeeDTO {
     private int empId;
     private String namePrefix;
     private String firstName;
-    private char middleInitial;
+    private String middleInitial;
     private String lastName;
-    private char gender;
+    private String gender;
     private String email;
     private LocalDate dob;
     private LocalDate dateOfJoining;
@@ -25,9 +25,9 @@ public class EmployeeDTO {
         this.empId = Integer.parseInt(employee.getEmpId());
         this.namePrefix = employee.getNamePrefix();
         this.firstName = employee.getFirstName();
-        this.middleInitial = employee.getMiddleInitial().charAt(0);
+        this.middleInitial = employee.getMiddleInitial();
         this.lastName = employee.getLastName();
-        this.gender = employee.getGender().charAt(0);
+        this.gender = employee.getGender();
         this.email = employee.getEmail();
         this.dob = LocalDate.parse(employee.getDob(), Validator.getDateFormatter());
         this.dateOfJoining = LocalDate.parse(employee.getDateOfJoining(), Validator.getDateFormatter());
@@ -76,11 +76,11 @@ public class EmployeeDTO {
         this.firstName = firstName;
     }
 
-    public char getMiddleInitial() {
+    public String getMiddleInitial() {
         return middleInitial;
     }
 
-    public void setMiddleInitial(char middleInitial) {
+    public void setMiddleInitial(String middleInitial) {
         this.middleInitial = middleInitial;
     }
 
@@ -92,11 +92,11 @@ public class EmployeeDTO {
         this.lastName = lastName;
     }
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

@@ -14,6 +14,8 @@ public class App
         CleanerLogger.setLoggerConfig();
         logger.log(Level.INFO, "Starting program");
         ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecords.csv");
+        DBRecordInserter.insertRecords();
+
     }
 
 }

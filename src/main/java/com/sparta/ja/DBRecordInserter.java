@@ -6,15 +6,15 @@ import java.util.List;
 
 public class DBRecordInserter {
 
-
-
-    public static void main(String[] args) {
-        List<Integer> nums = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,1,2,3,4,5,6,7,8,9));
-
+    public static void insertRecords() {
+        getSeparateEmployeeArray(ListOfEmployeesGenerator.getListOfCleanEmployees());
     }
-    private static void getSeparateEmployeeArray(List<EmployeeDTO> employees) {
 
-        if (employees.size() <= 1000) { return; }
+    public static void getSeparateEmployeeArray(List<EmployeeDTO> employees) {
+
+        if (employees.size() <= 1000) {
+            createThread(employees);
+            return; }
 
         int middleIndex = employees.size() / 2;
 
@@ -23,9 +23,6 @@ public class DBRecordInserter {
 
         getSeparateEmployeeArray(employeesArrayOne);
         getSeparateEmployeeArray(employeesArrayTwo);
-
-        createThread(employeesArrayOne);
-        createThread(employeesArrayTwo);
 
     }
 

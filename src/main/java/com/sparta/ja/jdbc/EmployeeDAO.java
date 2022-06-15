@@ -1,6 +1,8 @@
 package com.sparta.ja.jdbc;
 
 
+import com.sparta.ja.EmployeeDTO;
+
 import java.sql.*;
 
 public class EmployeeDAO {
@@ -53,7 +55,7 @@ public class EmployeeDAO {
             preparedStatement.setString(8, dob);
             preparedStatement.setString(9, dateOfJoining);
             preparedStatement.setString(10, salary);
-            System.out.println(preparedStatement.executeUpdate());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -65,14 +67,14 @@ public class EmployeeDAO {
             preparedStatement.setInt(1, employee.getEmpId());
             preparedStatement.setString(2, employee.getNamePrefix());
             preparedStatement.setString(3, employee.getFirstName());
-            preparedStatement.setString(4, employee.getMiddleInitial());
+            preparedStatement.setString(4, String.valueOf(employee.getMiddleInitial()));
             preparedStatement.setString(5, employee.getLastName());
             preparedStatement.setString(6, employee.getGender());
             preparedStatement.setString(7, employee.getEmail());
-            preparedStatement.setDate(8, employee.getDob());
-            preparedStatement.setDate(9, employee.getDateOfJoining());
+            preparedStatement.setDate(8, Date.valueOf(employee.getDob()));
+            preparedStatement.setDate(9, Date.valueOf(employee.getDateOfJoining()));
             preparedStatement.setInt(10, employee.getSalary());
-            System.out.println(preparedStatement.executeUpdate());
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
