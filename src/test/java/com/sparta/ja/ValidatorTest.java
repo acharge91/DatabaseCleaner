@@ -19,39 +19,100 @@ public class ValidatorTest {
     }
 
     @Test
+    @DisplayName("Check Valid Month Returns True")
+    void checkValidMonthReturnsTrue() {
+        String testMonthFormat = "06/10/2020";
+        Assertions.assertTrue(Validator.isValidDateFormat(testMonthFormat));
+    }
+
+    @Test
     @DisplayName("Check Invalid Month Returns false")
     void checkInvalidMonthReturnsFalse() {
-        String testDateFormat = "23/06/2020";
-        Assertions.assertFalse(Validator.isValidDateFormat(testDateFormat));
+        String testMonthFormat = "23/06/2020";
+        Assertions.assertFalse(Validator.isValidDateFormat(testMonthFormat));
     }
+    @Test
+    @DisplayName("Check a Negative Invalid Month Returns false")
+    void checkANegativeInvalidMonthReturnsFalse() {
+        String testMonthFormat = "-10/06/2020";
+        Assertions.assertFalse(Validator.isValidDateFormat(testMonthFormat));
+    }
+    @Test
+    @DisplayName("Check a Null Month Returns false")
+    void checkNullMonthReturnsFalse() {
+        String testMonthFormat = "/06/2020";
+        Assertions.assertFalse(Validator.isValidDateFormat(testMonthFormat));
+    }
+
+
+
 
     @Test
     @DisplayName("Check Leading zeros return True")
     void checkLeadingZerosReturnTrue() {
-        String testDateFormat = "06/09/2020";
-        Assertions.assertTrue(Validator.isValidDateFormat(testDateFormat));
+        String testZeroFormat = "06/09/2020";
+        Assertions.assertTrue(Validator.isValidDateFormat(testZeroFormat));
     }
+    @Test
+    @DisplayName("Check Without Leading zeros return True")
+    void checkWithoutLeadingZerosReturnTrue() {
+        String testZeroFormat = "6/09/2020";
+        Assertions.assertTrue(Validator.isValidDateFormat(testZeroFormat));
+    }
+
+
+
+    @Test
+    @DisplayName("Check Valid Day return True")
+    void checkValidDayReturnTrue() {
+        String testDayFormat = "06/15/2020";
+        Assertions.assertTrue(Validator.isValidDateFormat(testDayFormat));
+    }
+
 
     @Test
     @DisplayName("Check Invalid Day Returns false")
     void checkInvalidDayReturnsFalse() {
-        String testDateFormat = "08/35/2020";
-        Assertions.assertFalse(Validator.isValidDateFormat(testDateFormat));
+        String testDayFormat = "08/35/2020";
+        Assertions.assertFalse(Validator.isValidDateFormat(testDayFormat));
     }
+    @Test
+    @DisplayName("Check a Null  Day Returns false")
+    void checkNullDayReturnsFalse() {
+        String testDayFormat = "08//2020";
+        Assertions.assertFalse(Validator.isValidDateFormat(testDayFormat));
+    }
+
+    @Test
+    @DisplayName("Check a Negative  Day Returns false")
+    void checkNegativeDayReturnsFalse() {
+        String testDayFormat = "08/-25/2020";
+        Assertions.assertFalse(Validator.isValidDateFormat(testDayFormat));
+    }
+
+
 
     @Test
     @DisplayName("Check Invalid Year Returns False")
     void checkInvalidYearReturnsFalse() {
-        String testDateFormat = "06/06/2035";
-        Assertions.assertFalse(Validator.isValidDate(testDateFormat));
+        String testYearFormat = "06/06/2035";
+        Assertions.assertFalse(Validator.isValidDate(testYearFormat));
     }
 
     @Test
     @DisplayName("Check a valid Year returns True")
     void checkIfItReturnsAValidYear() {
-        String testDateFormat = "06/06/2010";
-        Assertions.assertTrue(Validator.isValidDate(testDateFormat));
+        String testYearFormat = "06/06/2010";
+        Assertions.assertTrue(Validator.isValidDate(testYearFormat));
     }
+    @Test
+    @DisplayName("Check for a future Year Returns False")
+    void checkForaFutureYearReturnsFalse() {
+        String testYearFormat = "06/06/2030";
+        Assertions.assertFalse(Validator.isValidDate(testYearFormat));
+    }
+
+
 
     @Test
     @DisplayName("Check if the gender is valid")
@@ -99,10 +160,15 @@ public class ValidatorTest {
         Assertions.assertFalse(Validator.isValidGender(testGenderFormat));
     }
     @Test
+<<<<<<< HEAD
+    @DisplayName("Check the gender Invalid in Lowercase")
+    void checkIfaGenderIsInvalidInLowercase() {
+=======
     @DisplayName("Check the gender in Lowercase")
 
     void checkIfaGenderIsInvalidLowercase() {
 
+>>>>>>> 883c37cae8b1862a6bd9d3711030095a86e143d4
         String testGenderFormat = "d";
         Assertions.assertFalse(Validator.isValidGender(testGenderFormat));
     }
@@ -116,7 +182,7 @@ public class ValidatorTest {
     }
     @Test
     @DisplayName("Check if there is only one Middle name Initial in Lowercase")
-    void checkIfThereisOnlyOneMiddleNameInitialinLowerCase() {
+    void checkIfThereIsOnlyOneMiddleNameInitialInLowerCase() {
         String testMiddleNameFormat = "a";
         Assertions.assertTrue(Validator.isValidMiddleInitial(testMiddleNameFormat));
     }
