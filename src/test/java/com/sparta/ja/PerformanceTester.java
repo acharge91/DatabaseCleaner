@@ -9,7 +9,8 @@ public class PerformanceTester {
     @Test
     @DisplayName("Test Performance of a csv file with Thousand Entries")
     void checkThePerformanceWith1000Entries(){
-        DBRecordsDeleter.deleteAllRecordsFromDatabase
+        DBRecordInserter.setEmployeeArrayLimit(8200);
+        DBRecordsDeleter.deleteAllRecordsFromDatabase();
         long startTime = System.nanoTime();
         ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecords1k.csv");
 
@@ -24,8 +25,8 @@ public class PerformanceTester {
     @Test
     @DisplayName("Test Performance of a csv file with 5000 Entries")
     void checkThePerformanceWith5000Entries(){
-        DBRecordsDeleter.deleteAllRecordsFromDatabase
-
+        DBRecordInserter.setEmployeeArrayLimit(8200);
+        DBRecordsDeleter.deleteAllRecordsFromDatabase();
 
         long startTime = System.nanoTime();
         ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecords5k.csv");
@@ -41,7 +42,8 @@ public class PerformanceTester {
     @Test
     @DisplayName("Test Performance of a csv file with 30K Entries")
     void checkThePerformanceWith30kEntries(){
-        DBRecordsDeleter.deleteAllRecordsFromDatabase
+        DBRecordInserter.setEmployeeArrayLimit(8200);
+        DBRecordsDeleter.deleteAllRecordsFromDatabase();
         long startTime = System.nanoTime();
         ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecords30k.csv");
 
@@ -56,7 +58,8 @@ public class PerformanceTester {
     @Test
     @DisplayName("Test Performance of a csv file for a corrupted data with 100k entries")
     void checkThePerformanceWith100kEntries(){
-        DBRecordsDeleter.deleteAllRecordsFromDatabase
+        DBRecordInserter.setEmployeeArrayLimit(8200);
+        DBRecordsDeleter.deleteAllRecordsFromDatabase();
         long startTime = System.nanoTime();
         ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecordsXXL.csv");
 
