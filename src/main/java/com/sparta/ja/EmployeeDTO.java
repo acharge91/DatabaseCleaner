@@ -37,19 +37,17 @@ public class EmployeeDTO {
 
     @Override
     public String toString() {
-        return "EmployeeDTO{" +
-                "empId=" + empId +
-                ", namePrefix='" + namePrefix + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", middleInitial=" + middleInitial +
-                ", lastName='" + lastName + '\'' +
-                ", gender=" + gender +
-                ", email='" + email + '\'' +
-                ", dob=" + dob +
-                ", dateOfJoining=" + dateOfJoining +
-                ", salary=" + salary +
-                ", isClean=" + isClean +
-                '}';
+        return "Employee: " + empId +
+                ", " + namePrefix +
+                ", " + firstName +
+                ", " + middleInitial +
+                ", " + lastName +
+                ", " + gender +
+                ", " + email +
+                ", " + dob +
+                ", " + dateOfJoining +
+                ", " + salary +
+                ", " + isClean;
     }
 
     public int getEmpId() {

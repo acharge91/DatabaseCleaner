@@ -23,6 +23,7 @@ public class App
         double totalTime = (endTime - startTime);
 
         System.out.println(totalTime + " seconds");
+        ListOfEmployeesGenerator.writeEntriesToFile();
 
     }
 
