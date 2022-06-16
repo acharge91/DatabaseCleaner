@@ -27,8 +27,9 @@ public class DBRecordInserter {
     }
 
     private static void createThread(List<EmployeeDTO> employees) {
-        ThreadCreator newThread = new ThreadCreator(employees);
-        newThread.run();
+        ThreadCreator employeesThread = new ThreadCreator(employees);
+        Thread thread = new Thread(employeesThread);
+        thread.start();
     }
 
 
