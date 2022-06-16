@@ -11,6 +11,7 @@ public class App
     private static Logger logger = CleanerLogger.getLogger();
     public static void main( String[] args )
     {
+        DBRecordInserter.setEmployeeArrayLimit(8200);
         CleanerLogger.setLoggerConfig();
 //        logger.log(Level.INFO, "Starting program");
         double startTime = System.nanoTime();

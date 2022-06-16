@@ -11,7 +11,7 @@ public class DBRecordInserter {
     private static int employeeArrayLimit;
 
 
-    public static void setThreadPool(int arrayLimit) {
+    public static void setEmployeeArrayLimit(int arrayLimit) {
         employeeArrayLimit = arrayLimit;
     }
 
