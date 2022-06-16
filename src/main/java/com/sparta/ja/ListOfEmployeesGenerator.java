@@ -26,6 +26,7 @@ public class ListOfEmployeesGenerator {
             bufferedReader.readLine(); //ignores first line of made up of headers
 //            logger.log(Level.INFO, "Iterating through records in " + fileName);
 
+
             addEmployeesToArrays(bufferedReader);
 
 //            System.out.println(listOfCleanEmployees.size());
@@ -45,16 +46,18 @@ public class ListOfEmployeesGenerator {
 //            logger.log(Level.INFO, "Processing line " + count + " in file");
             String[] employeeDetails = line.split(",");
 
-            EmployeeDTOString employeeDTOString = new EmployeeDTOString(employeeDetails);
+            if(employeeDetails.length>0) {
+                EmployeeDTOString employeeDTOString = new EmployeeDTOString(employeeDetails);
 
-            if (Validator.validate(employeeDTOString)){
-                listOfCleanEmployees.add(new EmployeeDTO(employeeDTOString));
+
+                if (Validator.validate(employeeDTOString)) {
+                    listOfCleanEmployees.add(new EmployeeDTO(employeeDTOString));
 //                logger.log(Level.INFO, "Adding employee into clean dataset");
-            } else {
-                listOfCorruptEmployees.add(new EmployeeDTO(employeeDTOString));
+                } else {
+                    listOfCorruptEmployees.add(new EmployeeDTO(employeeDTOString));
 //                logger.log(Level.INFO, "Adding employee into corrupted dataset");
-            }
-            count++;
+                }
+            count++;}
         }
 
 //        DBRecordInserter.getSeparateEmployeeArray(listOfCleanEmployees);
