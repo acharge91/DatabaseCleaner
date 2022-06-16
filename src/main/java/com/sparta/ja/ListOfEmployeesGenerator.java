@@ -2,10 +2,7 @@ package com.sparta.ja;
 
 import com.sparta.ja.logging.CleanerLogger;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,6 +13,7 @@ public class ListOfEmployeesGenerator {
     private static final List<EmployeeDTO> listOfCorruptEmployees = new ArrayList<>();
     private static Logger logger = CleanerLogger.getLogger();
     private static int count = 2;
+    private static String headers;
 
     public static void readFromFile(String fileName) {
         logger.log(Level.INFO, "Attempting to read CSV file");
@@ -23,7 +21,7 @@ public class ListOfEmployeesGenerator {
             FileReader fileReader = new FileReader(fileName);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-            bufferedReader.readLine(); //ignores first line of made up of headers
+            headers = bufferedReader.readLine(); //ignores first line of made up of headers
             logger.log(Level.INFO, "Iterating through records in " + fileName);
 
             addEmployeesToArrays(bufferedReader);
@@ -62,6 +60,21 @@ public class ListOfEmployeesGenerator {
 
     public static List<EmployeeDTO> getListOfCleanEmployees() {
         return listOfCleanEmployees;
+    }
+
+    public static void writeEntriesToFile(){
+
+            try {
+                FileWriter fileWriter = new FileWriter("src/main/resources/CorruptRecords.csv");
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                bufferedWriter.write(headers + "\n");
+                for (EmployeeDTO employeeDTO : listOfCorruptEmployees){
+                    bufferedWriter.write(employeeDTO.toString() + "\n");
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
     }
 
 
