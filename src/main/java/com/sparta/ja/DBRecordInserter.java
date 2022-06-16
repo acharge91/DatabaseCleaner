@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 public class DBRecordInserter {
 
     private static ExecutorService threadPool;
-    private static int employeeArrayLimit = 8500;
+    private static int employeeArrayLimit = 9000;
 
     public static void insertRecords() {
         setThreadPool();
