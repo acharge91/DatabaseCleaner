@@ -11,15 +11,16 @@ public class App
     private static Logger logger = CleanerLogger.getLogger();
     public static void main( String[] args )
     {
+        DBRecordInserter.setEmployeeArrayLimit(8200);
         CleanerLogger.setLoggerConfig();
-        logger.log(Level.INFO, "Starting program");
-        long startTime = System.nanoTime();
-        ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecords.csv");
+//        logger.log(Level.INFO, "Starting program");
+        double startTime = System.nanoTime();
+        ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecordsLarge.csv");
 
         DBRecordInserter.insertRecords();
-        long endTime = System.nanoTime();
+        double endTime = System.nanoTime();
 
-        long totalTime = (endTime - startTime) / 1_000_000_000;
+        double totalTime = (endTime - startTime);
 
         System.out.println(totalTime + " seconds");
         ListOfEmployeesGenerator.writeEntriesToFile();

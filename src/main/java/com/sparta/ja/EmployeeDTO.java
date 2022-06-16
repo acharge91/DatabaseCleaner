@@ -32,7 +32,7 @@ public class EmployeeDTO {
         this.dob = LocalDate.parse(employee.getDob(), Validator.getDateFormatter());
         this.dateOfJoining = LocalDate.parse(employee.getDateOfJoining(), Validator.getDateFormatter());
         this.salary = Integer.parseInt(employee.getSalary());
-        logger.log(Level.INFO, "Creating employee with correct data types from EmployeeDTOString");
+//        logger.log(Level.INFO, "Creating employee with correct data types from EmployeeDTOString");
     }
 
     @Override
