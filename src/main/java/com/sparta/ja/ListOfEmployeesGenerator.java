@@ -1,6 +1,9 @@
 package com.sparta.ja;
 
 import com.sparta.ja.logging.CleanerLogger;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVPrinter;
+import org.apache.commons.csv.QuoteMode;
 
 import java.io.*;
 import java.util.*;
@@ -69,11 +72,13 @@ public class ListOfEmployeesGenerator {
 
             try {
                 FileWriter fileWriter = new FileWriter("src/main/resources/CorruptRecords.csv");
-                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-                bufferedWriter.write(headers + "\n");
+                CSVFormat csvFormat = CSVFormat.DEFAULT;
+                CSVPrinter csvPrinter = new CSVPrinter(fileWriter, csvFormat);
+                csvPrinter.printRecord(headers + "\n");
                 for (EmployeeDTO employeeDTO : listOfCorruptEmployees){
-                    bufferedWriter.write(employeeDTO.toString() + "\n");
+                    csvPrinter.printRecord(employeeDTO.toString() + "\n");
                 }
+                csvPrinter.flush();
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
