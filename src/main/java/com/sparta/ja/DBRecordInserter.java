@@ -4,11 +4,14 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class DBRecordInserter {
 
     private static ThreadPoolExecutor threadPool;
     private static int employeeArrayLimit;
+
+    private static double totalTime;
 
 
     public static void setEmployeeArrayLimit(int arrayLimit) {
@@ -19,6 +22,19 @@ public class DBRecordInserter {
         setThreadPool();
         getSeparateEmployeeArray(ListOfEmployeesGenerator.getListOfCleanEmployees());
         threadPool.shutdown();
+        try {
+            if (threadPool.awaitTermination(10, TimeUnit.SECONDS)) {
+                double endTime = System.nanoTime();
+                PerformanceTimer.setEndTime(endTime);
+                PerformanceTimer.setTotalTime();
+            };
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void setTotalTime(double endTime) {
+
     }
     
     public static void setThreadPool() {

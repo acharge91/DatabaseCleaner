@@ -34,18 +34,22 @@ public class Validator {
                                     return true;
                                 } else {
 //                                    logger.log(Level.INFO, "Salary is invalid");
+
                                     return false;
                                 }
                             } else {
 //                                logger.log(Level.INFO, "Email is invalid");
+
                                 return false;
                             }
                         } else {
 //                            logger.log(Level.INFO, "Middle initial is invalid");
+
                             return false;
                         }
                     } else {
 //                        logger.log(Level.INFO, "Gender is invalid");
+
                         return false;
                     }
                 } else {
@@ -54,11 +58,11 @@ public class Validator {
                 }
             } else {
 //                logger.log(Level.INFO, "Dates for DOB are invalid");
-
                 return false;
             }
         } else {
 //            logger.log(Level.INFO, "Employee ID is a duplicate");
+
             return false;
         }
 

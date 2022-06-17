@@ -15,14 +15,12 @@ public class App
         CleanerLogger.setLoggerConfig();
 //        logger.log(Level.INFO, "Starting program");
         double startTime = System.nanoTime();
+        PerformanceTimer.setStartTime(startTime);
         ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecordsLarge.csv");
 
         DBRecordInserter.insertRecords();
-        double endTime = System.nanoTime();
 
-        double totalTime = (endTime - startTime);
 
-        System.out.println(totalTime + " seconds");
         ListOfEmployeesGenerator.writeEntriesToFile();
 
     }
