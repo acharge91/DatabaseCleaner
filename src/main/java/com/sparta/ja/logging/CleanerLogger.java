@@ -18,7 +18,7 @@ public class CleanerLogger {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        logger.setLevel(Level.INFO);
+        logger.setLevel(Level.OFF);
     }
 
     public static Logger getLogger(){

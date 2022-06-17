@@ -1,4 +1,4 @@
-package com.sparta.ja;
+package com.sparta.ja.recordmanager;
 
 import com.sparta.ja.jdbc.ConnectionManager;
 import com.sparta.ja.jdbc.EmployeeDAO;

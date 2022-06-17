@@ -1,17 +1,18 @@
 package com.sparta.ja;
 
+import com.sparta.ja.employee.EmployeeDTO;
+import com.sparta.ja.employee.ListOfEmployeesGenerator;
+import com.sparta.ja.recordmanager.DBRecordInserter;
+
 import java.util.List;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class DBRecordInserter {
+public class ThreadManager {
 
     private static ThreadPoolExecutor threadPool;
     private static int employeeArrayLimit;
-
-    private static double totalTime;
 
 
     public static void setEmployeeArrayLimit(int arrayLimit) {
@@ -33,10 +34,6 @@ public class DBRecordInserter {
         }
     }
 
-    private static void setTotalTime(double endTime) {
-
-    }
-    
     public static void setThreadPool() {
         int threadCount = ListOfEmployeesGenerator.getListOfCleanEmployees().size() / employeeArrayLimit + 1;
         threadPool = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadCount);
@@ -59,7 +56,7 @@ public class DBRecordInserter {
     }
 
     private static void createThread(List<EmployeeDTO> employees) {
-        ThreadCreator employeesThread = new ThreadCreator(employees);
+        DBRecordInserter employeesThread = new DBRecordInserter(employees);
         threadPool.execute(employeesThread);
     }
 
