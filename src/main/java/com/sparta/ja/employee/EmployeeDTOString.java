@@ -1,4 +1,4 @@
-package com.sparta.ja;
+package com.sparta.ja.employee;
 
 import com.sparta.ja.logging.CleanerLogger;
 
@@ -31,7 +31,7 @@ public class EmployeeDTOString {
         this.dob = dob;
         this.dateOfJoining = dateOfJoining;
         this.salary = salary;
-//        logger.log(Level.INFO, "Creating employee from multiple separate values");
+        logger.log(Level.INFO, "Creating employee from multiple separate values");
     }
 
     public EmployeeDTOString(String[] fileRecord) {
@@ -45,12 +45,12 @@ public class EmployeeDTOString {
         this.dob = fileRecord[7];
         this.dateOfJoining = fileRecord[8];
         this.salary = fileRecord[9];
-//        logger.log(Level.INFO, "Creating employee from values in String array");
+        logger.log(Level.INFO, "Creating employee from values in String array");
     }
 
     @Override
     public String toString() {
-//        logger.log(Level.INFO, "toString method for employee called");
+        logger.log(Level.INFO, "toString method for employee called");
         return "EmployeeDTOString{" +
                 "empId='" + empId + '\'' +
                 ", namePrefix='" + namePrefix + '\'' +

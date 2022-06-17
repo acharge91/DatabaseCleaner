@@ -1,5 +1,6 @@
 package com.sparta.ja;
 
+import com.sparta.ja.employee.EmployeeDTOString;
 import com.sparta.ja.logging.CleanerLogger;
 
 import java.time.LocalDate;
@@ -16,52 +17,52 @@ public class Validator {
     private static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("M/d/yyyy");
     private static Logger logger = CleanerLogger.getLogger();
     public static boolean validate(EmployeeDTOString employee){
-//        logger.log(Level.INFO, "Validating values for employee record");
+        logger.log(Level.INFO, "Validating values for employee record");
         if (employeeSet.add(employee.getEmpId())){
-//            logger.log(Level.INFO, "Employee ID is not a duplicate");
+            logger.log(Level.INFO, "Employee ID is not a duplicate");
             if (isValidDateCheck(employee.getDob())) {
-//                logger.log(Level.INFO, "Dates for DOB are valid");
+                logger.log(Level.INFO, "Dates for DOB are valid");
                 if (isValidDateCheck(employee.getDateOfJoining())) {
-//                    logger.log(Level.INFO, "Dates for date of joining are valid");
+                    logger.log(Level.INFO, "Dates for date of joining are valid");
                     if (isValidGender(employee.getGender())) {
-//                        logger.log(Level.INFO, "Gender is valid");
+                        logger.log(Level.INFO, "Gender is valid");
                         if (isValidMiddleInitial(employee.getMiddleInitial())) {
-//                            logger.log(Level.INFO, "Middle initial is valid");
+                            logger.log(Level.INFO, "Middle initial is valid");
                             if (isValidEmail(employee, employee.getEmail())) {
-//                                logger.log(Level.INFO, "Email is valid");
+                                logger.log(Level.INFO, "Email is valid");
                                 if (isValidSalary(employee.getSalary())) {
-//                                    logger.log(Level.INFO, "Salary is valid");
+                                    logger.log(Level.INFO, "Salary is valid");
                                     return true;
                                 } else {
-//                                    logger.log(Level.INFO, "Salary is invalid");
+                                    logger.log(Level.INFO, "Salary is invalid");
 
                                     return false;
                                 }
                             } else {
-//                                logger.log(Level.INFO, "Email is invalid");
+                                logger.log(Level.INFO, "Email is invalid");
 
                                 return false;
                             }
                         } else {
-//                            logger.log(Level.INFO, "Middle initial is invalid");
+                            logger.log(Level.INFO, "Middle initial is invalid");
 
                             return false;
                         }
                     } else {
-//                        logger.log(Level.INFO, "Gender is invalid");
+                        logger.log(Level.INFO, "Gender is invalid");
 
                         return false;
                     }
                 } else {
-//                    logger.log(Level.INFO, "Dates for date of joining are invalid");
+                    logger.log(Level.INFO, "Dates for date of joining are invalid");
                     return false;
                 }
             } else {
-//                logger.log(Level.INFO, "Dates for DOB are invalid");
+                logger.log(Level.INFO, "Dates for DOB are invalid");
                 return false;
             }
         } else {
-//            logger.log(Level.INFO, "Employee ID is a duplicate");
+            logger.log(Level.INFO, "Employee ID is a duplicate");
 
             return false;
         }
@@ -73,19 +74,19 @@ public class Validator {
     }
 
     public static boolean isValidDateFormat(String date){
-//        logger.log(Level.INFO, "Checking dates are in the correct format");
+        logger.log(Level.INFO, "Checking dates are in the correct format");
         try {
             dateFormatter.parse(date);
-//            logger.log(Level.INFO, "Date is in the correct format");
+            logger.log(Level.INFO, "Date is in the correct format");
             return true;
         } catch (DateTimeParseException e) {
-//            logger.log(Level.INFO, "Date is not in the correct format");
+            logger.log(Level.INFO, "Date is not in the correct format");
             return false;
         }
     }
 
     public static boolean isValidDate(String date){
-//        logger.log(Level.INFO, "Checking date is not in the future");
+        logger.log(Level.INFO, "Checking date is not in the future");
         LocalDate localDate = LocalDate.now();
         LocalDate inputDate = LocalDate.parse(date, dateFormatter);
         return inputDate.isBefore(localDate);

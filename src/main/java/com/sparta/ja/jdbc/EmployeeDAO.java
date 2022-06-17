@@ -1,7 +1,7 @@
 package com.sparta.ja.jdbc;
 
 
-import com.sparta.ja.EmployeeDTO;
+import com.sparta.ja.employee.EmployeeDTO;
 
 import java.sql.*;
 
