@@ -56,12 +56,12 @@ public class PerformanceTester {
     }
 
     @Test
-    @DisplayName("Test Performance of a csv file for a corrupted data with 100k entries")
+    @DisplayName("Test Performance of a csv file with 100k entries")
     void checkThePerformanceWith100kEntries(){
         DBRecordInserter.setEmployeeArrayLimit(8200);
         DBRecordsDeleter.deleteAllRecordsFromDatabase();
         long startTime = System.nanoTime();
-        ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecordsXXL.csv");
+        ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecords100k.csv");
 
         DBRecordInserter.insertRecords();
         long endTime = System.nanoTime();
