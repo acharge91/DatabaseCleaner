@@ -1,5 +1,6 @@
 package com.sparta.ja;
 
+import com.sparta.ja.employee.EmployeeDTOString;
 import com.sparta.ja.logging.CleanerLogger;
 
 import java.time.LocalDate;
@@ -15,7 +16,7 @@ public class Validator {
     private static Set<String> employeeSet = new HashSet<>();
     private static DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("M/d/yyyy");
     private static Logger logger = CleanerLogger.getLogger();
-    public static boolean validate(EmployeeDTO employee){
+    public static boolean validate(EmployeeDTOString employee){
         logger.log(Level.INFO, "Validating values for employee record");
         if (employeeSet.add(employee.getEmpId())){
             logger.log(Level.INFO, "Employee ID is not a duplicate");
@@ -34,18 +35,22 @@ public class Validator {
                                     return true;
                                 } else {
                                     logger.log(Level.INFO, "Salary is invalid");
+
                                     return false;
                                 }
                             } else {
                                 logger.log(Level.INFO, "Email is invalid");
+
                                 return false;
                             }
                         } else {
                             logger.log(Level.INFO, "Middle initial is invalid");
+
                             return false;
                         }
                     } else {
                         logger.log(Level.INFO, "Gender is invalid");
+
                         return false;
                     }
                 } else {
@@ -54,11 +59,11 @@ public class Validator {
                 }
             } else {
                 logger.log(Level.INFO, "Dates for DOB are invalid");
-
                 return false;
             }
         } else {
             logger.log(Level.INFO, "Employee ID is a duplicate");
+
             return false;
         }
 
@@ -104,7 +109,7 @@ public class Validator {
                 .matches();
     }
 
-    public static boolean isValidEmail(EmployeeDTO employee, String email){
+    public static boolean isValidEmail(EmployeeDTOString employee, String email){
         if (employeeSet.add(employee.getEmail()) && isValidEmailFormat(email)){
             return true;
         }
@@ -126,7 +131,7 @@ public class Validator {
         return false;
     }
 
-
-
-
+    public static DateTimeFormatter getDateFormatter() {
+        return dateFormatter;
+    }
 }

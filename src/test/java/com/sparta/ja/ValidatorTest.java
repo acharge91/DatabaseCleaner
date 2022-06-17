@@ -160,15 +160,8 @@ public class ValidatorTest {
         Assertions.assertFalse(Validator.isValidGender(testGenderFormat));
     }
     @Test
-<<<<<<< HEAD
-    @DisplayName("Check the gender Invalid in Lowercase")
-    void checkIfaGenderIsInvalidInLowercase() {
-=======
     @DisplayName("Check the gender in Lowercase")
-
     void checkIfaGenderIsInvalidLowercase() {
-
->>>>>>> 883c37cae8b1862a6bd9d3711030095a86e143d4
         String testGenderFormat = "d";
         Assertions.assertFalse(Validator.isValidGender(testGenderFormat));
     }
@@ -228,16 +221,36 @@ public class ValidatorTest {
         Assertions.assertTrue(Validator.isValidSalary(testSalary));
     }
     @Test
-    @DisplayName("Check if the Salary is Zero")
-    void checkIfTheSalaryIsZero() {
+    @DisplayName("Check that Salary of Zero Returns True")
+    void checkThatSalaryOfZeroReturnsTrue() {
         String testSalary = "0";
         Assertions.assertTrue(Validator.isValidSalary(testSalary));
     }
     @Test
-    @DisplayName("Check if the Salary is Invalid")
-    void checkIfTheSalaryIsInvalid() {
+    @DisplayName("Check the Negative Salary Returns False")
+    void checkTheNegativeSalaryReturnsFalse() {
         String testSalary = "-10000";
         Assertions.assertFalse(Validator.isValidSalary(testSalary));
+    }
+    @Test
+    @DisplayName("Check that Valid Email Format Returns True")
+    void checkValidEmailReturnsTrue() {
+        String testEmailFormat = "haji.kulfi@gmail.com";
+        Assertions.assertTrue(Validator.isValidEmailFormat(testEmailFormat));
+    }
+
+    @Test
+    @DisplayName("Check that Invalid Email Format Returns False")
+    void checkInvalidEmailReturnsFalse() {
+        String testEmailFormat = "fsbfsdfc.com";
+        Assertions.assertFalse(Validator.isValidEmailFormat(testEmailFormat));
+    }
+
+    @Test
+    @DisplayName("Check that Empty Email Format Returns False")
+    void checkEmptyEmailReturnsFalse() {
+        String testEmailFormat = "";
+        Assertions.assertFalse(Validator.isValidEmailFormat(testEmailFormat));
     }
 
 }
