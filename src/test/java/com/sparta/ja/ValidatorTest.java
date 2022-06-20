@@ -84,7 +84,7 @@ public class ValidatorTest {
     }
 
     @Test
-    @DisplayName("Check a Negative  Day Returns false")
+    @DisplayName("Check a Negative Day Returns false")
     void checkNegativeDayReturnsFalse() {
         String testDayFormat = "08/-25/2020";
         Assertions.assertFalse(Validator.isValidDateFormat(testDayFormat));
