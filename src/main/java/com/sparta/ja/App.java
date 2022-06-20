@@ -14,18 +14,23 @@ public class App
     public static void main( String[] args )
     {
         DBRecordsDeleter.deleteAllRecordsFromDatabase();
-        ThreadManager.setEmployeeArrayLimit(8200);
+        runProgram(8200, "src/main/resources/EmployeeRecordsLarge.csv");
+
+    }
+
+    public static void runProgram(int arrayLimit, String csvFile) {
+
+        ThreadManager.setEmployeeArrayLimit(arrayLimit);
         CleanerLogger.setLoggerConfig();
         logger.log(Level.INFO, "Starting program");
         double startTime = System.nanoTime();
         PerformanceTimer.setStartTime(startTime);
-        ListOfEmployeesGenerator.readFromFile("src/main/resources/EmployeeRecordsLarge.csv");
+        ListOfEmployeesGenerator.readFromFile(csvFile);
 
         ThreadManager.insertRecords();
 
 
         ListOfEmployeesGenerator.writeEntriesToFile();
-
     }
 
 }
